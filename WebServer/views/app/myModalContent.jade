@@ -1,0 +1,32 @@
+.modal-header
+    h3.modal-title Adhoc Query Design
+.modal-body
+    div.container(ng-controller="adhocModalController")
+        div.modal-lg
+            form(action='', role="form", style="padding-right: 60px;")
+                .form-group.form-group-lg
+                    label.control-label(for='element-1') Name
+                    input#element-1.form-control(type='text')
+                    span.glyphicon.form-control-feedback
+                a(ng-click='showAdd = ! showAdd') Add criteria
+                    .glyphicon.glyphicon-plus-sign(ng-show='!showAdd')
+                    .glyphicon.glyphicon-minus-sign(ng-show='showAdd')
+                div(ng-show='showAdd')
+                    div.container
+                        div.row
+                            label.col-sm-3 Table
+                            label.col-sm-3 System
+                            label.col-sm-3 Operation
+                            label.col-sm-3 Value
+                        div.row(ng-repeat="row in rows")
+                            div(id="row{{$index}}")
+                                span.col-sm-2(dropdown-select='tables', dropdown-model='tableSelected', dropdown-item-label='text')
+                                span.col-sm-2(dropdown-select='columns', dropdown-model='columnSelected', dropdown-item-label='text')
+                                a(ng-click="addRow()")
+                                     .glyphicon.glyphicon-plus
+                                a(ng-click="removeRow($event)", id="minus{{$index}}", data="{{$index}}")
+                                    .glyphicon.glyphicon-minus
+
+.modal-footer
+    button.btn.btn-primary(ng-click='ok()') Save
+    button.btn.btn-warning(ng-click='cancel()') Cancel

@@ -1,0 +1,9 @@
+div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-controller="adhocReportController" )
+
+    button.btn.btn-default(ng-click='open()') Open me!
+    button.btn.btn-default(ng-click="open('lg')") Large modal
+    button.btn.btn-default(ng-click="open('sm')") Small modal
+    button.btn.btn-default(ng-click='toggleAnimation()') Toggle Animation ({{ animationsEnabled }})
+    div(ng-show='selected') Selection from a modal: {{ selected }}
+
+

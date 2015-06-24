@@ -1,0 +1,60 @@
+.modal-header
+    h3.modal-title Adhoc Query Design
+.modal-body
+    div.container(ng-controller="adhocModalController")
+        div.modal-lg
+            form(action='', role="form", style="padding-right: 60px;")
+                .form-group.form-group-lg
+                    label.control-label(for='element-1') Name
+                    input#element-1.form-control(type='text')
+                    span.glyphicon.form-control-feedback
+                a(ng-click='showAdd = ! showAdd') Add criteria
+                    .glyphicon.glyphicon-plus-sign(ng-show='!showAdd')
+                    .glyphicon.glyphicon-minus-sign(ng-show='showAdd')
+                div(ng-show='showAdd')
+                    form(role="form")
+                        div.form-group
+                            table.table.table-striped.table-condensed.table-hover
+                                tr
+                                    th
+                                        label.col-sm-3 Table
+                                    th
+                                        label.col-sm-3 System
+                                    th
+                                        label.col-sm-3 Operation
+                                    th
+                                        label.col-sm-3 Value
+                                //tbody
+                                    tr
+                                        td dd
+                                        td dd
+                                        td dd
+                                        td dd
+                                    tr
+                                        td.col-sm-3
+                                            //span(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text')
+                                        td.col-sm-3
+                                           // span(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text')
+                                        td.col-sm-3
+                                            //span(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text')
+                                        td.col-sm-3
+                                            //span(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text')
+
+
+                        //div
+
+                            label.control-label(for='element-2') Table
+                            input#element-2.form-control.input-sm(type='text')
+                            label.control-label(for='element-3') System
+                            input#element-3.form-control.input-sm(type='text')
+                            label.control-label(for='element-4') Filter
+                            input#element-4.form-control.input-lg(type='textarea')
+                            span.glyphicon.form-control-feedback
+
+       // ul
+         li(ng-repeat='item in items')
+            a(ng-click='selected.item = item') {{ item }}
+            b {{ selected.item }}
+.modal-footer
+    button.btn.btn-primary(ng-click='ok()') Save
+    button.btn.btn-warning(ng-click='cancel()') Cancel

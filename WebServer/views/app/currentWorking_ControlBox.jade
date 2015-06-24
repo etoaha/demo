@@ -1,0 +1,110 @@
+div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-controller="tabsController" )
+
+   ul.nav.nav-tabs
+      li(ng-repeat="tab in tabs" ng-class="{active:isActiveTab(tab.url)}" ng-click="onClickTab(tab)")
+         a {{tab.title}}
+
+   div( id="mainView" )
+      div.tab-content(id="controlBox")
+         //Data Entry Tab
+         div.tab( id="one.tpl.html" ng-class="{hidden:!isActiveTab('one.tpl.html')}")
+            div.alert.alert-info
+               a(ng-click="showAdd = ! showAdd; getUsers()") Add New Equipment&nbsp;
+                  .glyphicon.glyphicon-plus-sign(ng-show="!showAdd")
+                  .glyphicon.glyphicon-minus-sign(ng-show="showAdd")
+            div.container.col-md-2(ng-show='showAdd')
+               form(ng-controller='userTabController' novalidate)#login-form.well.span4
+                  div
+                     label Equipment ID
+                     input.form-control.span1.required(ng-model='data.teamUserId')
+                  div
+                     label Equipment Type
+                     input.form-control.span1.required(ng-model='data.email')
+                  div
+                     label Baseline
+                     input.form-control.span1.required(ng-model='data.teamId')
+                  div
+                     label Equipment ID
+                     input.form-control.span1.required(ng-model='data.teamUserId')
+                  div
+                     label Equipment Type
+                     input.form-control.span1.required(ng-model='data.email')
+                  div
+                     label UIC
+                     input.form-control.span1.required(ng-model='data.uic')
+                  div
+                     label LIN
+                     input.form-control.span1.required(ng-model='data.lin')
+                  div
+                     label NSN
+                     input.form-control.span1.required(ng-model='data.nsn')
+                  div
+                     label FSC
+                     input.form-control.span1.required(ng-model='data.fsc')
+                  div
+                     label Baseline
+                     input.form-control.span1.required(ng-model='data.teamId')
+                  button.btn.btn-primary(ng-click='addUser()')| Add
+
+         div.tab( id="two.tpl.html" ng-class="{hidden:!isActiveTab('two.tpl.html')}" ng-controller="adhocReportController" )
+            //div.container.alert.alert-info
+                div
+                    label Current View
+                div(id="dropdown" )
+                    span(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text')
+                div
+                    button.btn.btn-primary(ng-click="open('lg')") Add New
+                        //span(ng-show='selected') Selection from a modal: {{ selected }}
+            div(id="reportsTable" ng-controller="trailTabController")
+               div.alert.alert-info
+                  div.container
+                     div.row
+                        label.col-sm-2 Current View:
+                        span.col-sm-8(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text' )
+                        button.btn.btn-primary.btn-sm.col-sm-2(ng-click="open('lg')") Add New
+                     a(ng-click='showAdd = ! showAdd') Search
+                        .glyphicon.glyphicon-plus-sign(ng-show='!showAdd')
+                        .glyphicon.glyphicon-minus-sign(ng-show='showAdd')
+                  div(ng-show='showAdd')
+                     form.form-group.input-group.input-group-addon
+                        input.form-control(type="text", placeholder ="Report name" ng-model ="searchName" size="20")
+               h2 Reports
+                  button.inputItem.btn.btn-default.btn-xs.glyphicon.glyphicon-refresh(ng-click="getTrails()" title="Refresh Reports List")
+               table.table.table-striped.table-condensed.table-hover
+                  tr
+                     th
+                        a(href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse") ID
+                           .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'id' && !sortReverse")
+                           .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'id' && sortReverse")
+                     th
+                        a(href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse") Name
+                           .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'name' && !sortReverse")
+                           .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'name' && sortReverse")
+                     th
+                        a(href="#" ng-click="sortType = 'description'; sortReverse = !sortReverse") Description
+                           .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'description' && !sortReverse")
+                           .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'description' && sortReverse")
+                     th
+                        a(href="#" ng-click="sortType = 'created'; sortReverse = !sortReverse") Created
+                           .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'created' && !sortReverse")
+                           .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'created' && sortReverse")
+                     th
+                        a(href="#" ng-click="sortType = 'createdby'; sortReverse = !sortReverse") Created By
+                           .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'createdby' && !sortReverse")
+                           .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'createdby' && sortReverse")
+                     th
+                        a(href="#") View
+                  tbody
+                     tr(ng-repeat="trail in trails | orderBy:sortType:sortReverse | filter:searchName")
+                        td {{trail.id}}
+                        td {{trail.name}}
+                        td {{trail.description}}
+                        td {{trail.created}}
+                        td {{trail.createdBy}}
+                        td {{trail.view}}
+
+
+
+
+
+

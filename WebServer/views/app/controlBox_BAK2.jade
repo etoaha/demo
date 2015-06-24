@@ -1,0 +1,63 @@
+div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-controller="tabsController" )
+
+    ul.nav.nav-tabs
+        li(ng-repeat="tab in tabs" ng-class="{active:isActiveTab(tab.url)}" ng-click="onClickTab(tab)")
+            a {{tab.title}}
+
+    div( id="mainView" )
+        div.tab-content(id="controlBox")
+            //Data Entry Tab
+            div.tab( id="one.tpl.html" ng-class="{hidden:!isActiveTab('one.tpl.html')}")
+                div.alert.alert-info
+                    a(ng-click="showAdd = ! showAdd; getUsers()") Add New Equipment&nbsp;
+                        .glyphicon.glyphicon-plus-sign(ng-show="!showAdd")
+                        .glyphicon.glyphicon-minus-sign(ng-show="showAdd")
+                div.container.col-md-2(ng-show='showAdd')
+                    form(ng-controller='userTabController' novalidate)#login-form.well.span4
+                        div
+                            label Equipment ID
+                            input.form-control.span1.required(ng-model='data.teamUserId')
+                        div
+                            label Equipment Type
+                            input.form-control.span1.required(ng-model='data.email')
+                        div
+                            label Baseline
+                            input.form-control.span1.required(ng-model='data.teamId')
+                        button.btn.btn-primary(ng-click='addUser()')| Add
+
+            div.tab( id="two.tpl.html" ng-class="{hidden:!isActiveTab('two.tpl.html')}" ng-controller="adhocReportController" )
+                div.container
+                    div.well
+                        div.row
+                            div.col-sm-2
+                                label Current View
+                            div.col-lg-8(id="dropdown" width="100" )
+                                span(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text')
+                            div.col-md-2
+                                button.btn.btn-primary(ng-click="open('lg')") Add New
+                                    span(ng-show='selected') Selection from a modal: {{ selected }}
+                p Reports
+                    table.table.table-striped.table-condensed.table-hover
+                    table.table.table-striped
+                        tr
+                            th Report ID
+                            th Report Name
+                            th Report Description
+                            th View Report
+                        tbody
+                            tr
+                                td Report ID1
+                                td Report Name1
+                                td Report Description1
+                                td pdf, excel, word, html
+                            tr
+                                td Report ID2
+                                td Report Name2
+                                td Report Description2
+                                td pdf, excel, word, html
+
+
+
+
+
+

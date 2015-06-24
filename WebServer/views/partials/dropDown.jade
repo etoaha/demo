@@ -1,0 +1,13 @@
+//
+   Created by Toaha on 6/20/2015.
+.dropdown-container(ng-class='{ show: listVisible }')
+   .dropdown-display(ng-click='show();', ng-class='{ clicked: listVisible }')
+      span(ng-if='!isPlaceholder') {{display}}
+      span.placeholder(ng-if='isPlaceholder')
+         | {{placeholder}}lt;/span>
+         i.fa.fa-angle-down
+   .dropdown-list
+      div
+         div(ng-repeat='item in list', ng-click='select(item)', ng-class='{ selected: isSelected(item) }')
+            span {{property !== undefined ? item[property] : item}}
+            i.fa.fa-check

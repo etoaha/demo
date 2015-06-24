@@ -1,0 +1,183 @@
+div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-controller="tabsController" )
+
+   ul.nav.nav-tabs
+      li(ng-repeat="tab in tabs" ng-class="{active:isActiveTab(tab.url)}" ng-click="onClickTab(tab)")
+         a {{tab.title}}
+
+   div( id="mainView" )
+      div.tab-content(id="controlBox")
+
+         div.tab( id="one.tpl.html" ng-class="{hidden:!isActiveTab('one.tpl.html')}")
+            div(ng-controller="adhocReportController")
+               span.dropdown(dropdown='', on-toggle='toggled(open)')
+                  a.dropdown-toggle(href='', dropdown-toggle='')
+                     | Click me for a dropdown, yo!
+                  ul.dropdown-menu
+                     li(ng-repeat='choice in items')
+                        a(href='') {{choice}}
+               //div.alert.alert-info
+                   a(ng-click="showAdd = ! showAdd; getUsers()") Add New User&nbsp;
+                       .glyphicon.glyphicon-plus-sign(ng-show="!showAdd")
+                       .glyphicon.glyphicon-minus-sign(ng-show="showAdd")
+               //div.container.col-md-2(ng-show='showAdd')
+                   form(ng-controller='userTabController' novalidate)#login-form.well.span4
+                       div
+                           label User ID
+                           input.form-control.span1.required(ng-model='data.teamUserId')
+                       div
+                           label User Name (email address)
+                           input.form-control.span1.required(ng-model='data.email')
+                       div
+                           label User Team
+                           input.form-control.span1.required(ng-model='data.teamId')
+
+                       button.btn.btn-primary(ng-click='addUser()')| Add
+
+               //div.container
+               //    div
+               //        div.col-md-2 User ID
+               //        div.col-md-8 User Name
+               //        div.col-md-2 Team ID
+               //    div.row(ng-class-odd="odd" ng-class-even="even" ng-repeat="user in users")
+               //        div.col-md-2 {{user.teamUserId}}
+               //        div.col-md-8 {{user.email}}
+               //        div.col-md-2 {{user.teamId}}
+
+               div.col-md-12
+                  h2 Wil be implemented
+               // table.table.table-striped
+                    tr
+                        th User ID
+                        th User Name
+                        th Team ID
+                    tbody(ng-repeat="user in users")
+                        tr
+                            td {{user.teamUserId}}
+                            td {{user.email}}
+                            td {{user.teamId}}
+
+
+
+
+         div.tab( id="two.tpl.html" ng-class="{hidden:!isActiveTab('two.tpl.html')}")
+            div.alert.alert-info
+               a(ng-click='showAdd = ! showAdd') Add New Team&nbsp;
+                  .glyphicon.glyphicon-plus-sign(ng-show='!showAdd')
+                  .glyphicon.glyphicon-minus-sign(ng-show='showAdd')
+            div.container(ng-show='showAdd')
+               form(ng-controller='teamTabController' novalidate)#login-form.well.span4
+                  label Team ID
+                  input.form-control.span1.required(ng-model='data.id')
+                  label Team Name
+                  input.form-control.span1.required(ng-model='data.name')
+                  label Team Description
+
+                  input.form-control.span1.required(ng-model='data.description')
+                  button.btn.btn-primary(ng-click='addTeam()')| Add
+
+         div.tab( id="three.tpl.html" ng-class="{hidden:!isActiveTab('two.tpl.html')}" )
+            h2 Reports
+
+            table.table.table-striped.table-condensed.table-hover
+            table.table.table-striped
+               tr
+                  th Team ID
+                  th Team Name
+                  th Team Description
+               tbody
+                  tr
+                     td Bogus
+                     td Bogus 2
+                     td Bogus 3
+
+         div.tab( id="four.tpl.html" ng-class="{hidden:!isActiveTab('four.tpl.html')}" ng-controller="trailTabController")
+            div.alert.alert-info
+               a(ng-click='showAdd = ! showAdd') Search Trail Name&nbsp;
+                  .glyphicon.glyphicon-plus-sign(ng-show='!showAdd')
+                  .glyphicon.glyphicon-minus-sign(ng-show='showAdd')
+               div(ng-show='showAdd')
+                  form.form-group.input-group.input-group-addon
+                     input.form-control(type="text", placeholder ="Trail name" ng-model ="searchName" size="20")
+
+            div
+               h2 Datawake Trails
+                  button.inputItem.btn.btn-default.btn-xs.glyphicon.glyphicon-refresh(ng-click="getTrails()" title="Refresh Trails List")
+               table.table.table-striped.table-condensed.table-hover
+                  tr
+                     th
+
+                     th
+                        a(href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse") ID
+                           .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'id' && !sortReverse")
+                           .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'id' && sortReverse")
+                     th
+                        a(href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse") Name
+                           .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'name' && !sortReverse")
+                           .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'name' && sortReverse")
+                     th
+                        a(href="#" ng-click="sortType = 'description'; sortReverse = !sortReverse") Description
+                           .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'description' && !sortReverse")
+                           .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'description' && sortReverse")
+                     th
+                        a(href="#" ng-click="sortType = 'created'; sortReverse = !sortReverse") Created
+                           .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'created' && !sortReverse")
+                           .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'created' && sortReverse")
+                     th
+                        a(href="#" ng-click="sortType = 'createdby'; sortReverse = !sortReverse") Created By
+                           .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'createdby' && !sortReverse")
+                           .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'createdby' && sortReverse")
+                     th
+                        a(href="#" ng-click="sortType = 'domainId'; sortReverse = !sortReverse") Domain
+                           .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'domainId' && !sortReverse")
+                           .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'domainId' && sortReverse")
+                     th
+                        a(href="#" ng-click="sortType = 'teamId'; sortReverse = !sortReverse") Team
+                           .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'teamId' && !sortReverse")
+                           .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'teamId' && sortReverse")
+
+                  tbody
+                     tr(ng-repeat="trail in trails | orderBy:sortType:sortReverse | filter:searchName")
+                        td
+                           .checkbox
+                              label
+                              input(type="checkbox", name ='checkbox',value="{{trail.id}}")
+                        td {{trail.id}}
+                        td {{trail.name}}
+                        td {{trail.description}}
+                        td {{trail.created}}
+                        td {{trail.createdBy}}
+                        td {{trail.domainId}}
+                        td {{trail.teamId}}
+
+
+         div.tab( id="five.tpl.html" ng-class="{hidden:!isActiveTab('five.tpl.html')}")
+            div(ng-controller="paged")
+               table.table.table-striped.table-condensed.table-hover
+                  thead
+                     tr
+                        th.id(custom-sort order="'id'" sort="sort") Id
+                        th.name(custom-sort order="'name'" sort="sort") Name
+                        th.description(custom-sort order="'description'" sort="sort") Description
+                        th.field3(custom-sort order="'field3'" sort="sort") Field 3
+                        th.filed4(custom-sort order="'field4'" sort="sort") Field 4
+                        th.field5(custom-sort order="'field5'" sort="sort") Field 5
+                  tbody
+                     tr(ng-repeat="item in pagedItems[currentPage] | orderBy:sort.sortingOrder:sort.reverse")
+                        td {{item.id}}
+                        td {{item.name}}
+                        td {{item.description}}
+                     tr
+                        td(colspan="6")
+                           div.pull-right
+                              i(ng-class="{disabled: currentPage == 0}")
+                                 a(ng-click="prevPage()") « Prev&nbsp;
+                              i(ng-repeat="n in range(pagedItems.length, currentPage, currentPage + gap)" ng-class="{active: n == currentPage}" ng-click="setPage()")
+                                 a(ng-bind="n + 1") &nbsp;
+                              i(ng-class="{disabled: (currentPage) == pagedItems.length - 1}")
+                                 a(ng-click="nextPage()") &nbsp;Next »
+
+                  pre pagedItems.length: {{pagedItems.length|json}}
+                  pre currentPage: {{currentPage|json}}
+                  pre currentPage: {{sort|json}}
+                  pre trails.length: {{trails.length|json}}
+
