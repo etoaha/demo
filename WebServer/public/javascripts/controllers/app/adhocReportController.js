@@ -72,7 +72,35 @@ angular.module('NodeWebBase')
             //}
         ];
 
-        $scope.ddSelectSelected = { text: 'Please Select Report'}; // Must be an object
+
+        $scope.tSelectOptions = [
+            {
+                text: 'DCGS-A',
+                value: 'a value'
+            },
+            {
+                text: 'BLK II',
+                value: 'another value',
+                someprop: 'somevalue'
+            },
+
+        ];
+        $scope.cSelectOptions = [
+            {
+                text: 'DCGS-A',
+                value: 'a value'
+            },
+            {
+                text: 'BLK II',
+                value: 'another value',
+                someprop: 'somevalue'
+            },
+
+        ];
+
+        $scope.ddSelectSelected = { text: 'Please Select View'}; // Must be an object
+        $scope.tSelectSelected = { text: 'Please Select Table'};
+        $scope.cSelectSelected = { text: 'Please Select Column'};
 
 
 

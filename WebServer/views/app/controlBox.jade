@@ -102,6 +102,10 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
                                                 .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'id' && sortReverse")
                                     tbody
                                         tr
+                                            td test
+                                        tr
+                                            td test
+                                        tr
                                             td add new filter (+)
                     button.btn.btn-primary.btn-sm(ng-click="open('lg')")
                         .glyphicon.glyphicon-plus
@@ -132,13 +136,15 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
                                     br
 
                                     div Table:
-                                    div.col-sm-8(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text' )
+                                    div.col-sm-8(dropdown-select='tSelectOptions', dropdown-model='tSelectSelected', dropdown-item-label='text' )
 
                                     br
                                     br
 
                                     div Column:
-                                    div.col-sm-8(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text' )
+
+
+                                    div.col-sm-8(dropdown-select='cSelectOptions', dropdown-model='cSelectSelected', dropdown-item-label='text' )
 
 
                                     br
