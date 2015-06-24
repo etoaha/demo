@@ -13,22 +13,33 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
                         .glyphicon.glyphicon-plus-sign(ng-show="!showAdd")
                         .glyphicon.glyphicon-minus-sign(ng-show="showAdd")
                 div.container(ng-show='showAdd')
-                    form(ng-controller='userTabController' novalidate)#login-form.well.span4
+                    form(ng-controller='dataEntryTabController' novalidate name="dataEntryForm")#dataEntryForm.well.span4
                         div
-                            label Equipment ID
-                            input.form-control.span1.required(ng-model='data.teamUserId')
+                            label Make
+                            input.form-control.span1.required(ng-model='data.make' name="make")
+                            span(style='color:red', ng-show='dataEntryForm.make.$dirty && dataEntryForm.make.$invalid')
+                                span(ng-show='dataEntryForm.make.$error.required') Make is required.
                         div
-                            label Equipment Type
-                            input.form-control.span1.required(ng-model='data.email')
+                            label Model
+                            input.form-control.span1.required(ng-model='data.model')
                         div
-                            label Baseline
-                            input.form-control.span1.required(ng-model='data.teamId')
+                            label Serial Number
+                            input.form-control.span1.required(ng-model='data.serialNumber')
                         div
-                            label UIC
-                            input.form-control.span1.required(ng-model='data.uic')
+                            label Nominate for Removal
+                            input.form-control.span1.required(ng-model='data.nominateForRemoval')
                         div
-                            label Baseline
-                            input.form-control.span1.required(ng-model='data.teamId')
+                            label Serviceable (Yes/No)
+                            input.form-control.span1.required(ng-model='data.serviceable')
+                        div
+                            label Current Use
+                            input.form-control.span1.required(ng-model='data.currentUse')
+                        div
+                            label Memory
+                            input.form-control.span1.required(ng-model='data.memory')
+                        div
+                            label Storage
+                            input.form-control.span1.required(ng-model='data.storage')
                         button.btn.btn-primary(ng-click='addUser()')| Add
 
             div.tab( id="two.tpl.html" ng-class="{hidden:!isActiveTab('two.tpl.html')}" ng-controller="reportsController")
@@ -47,35 +58,38 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
                     table.table.table-striped.table-condensed.table-hover
                         tr
                             th
-                                a(href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse") ID
-                                    .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'id' && !sortReverse")
-                                    .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'id' && sortReverse")
+                                a(href="#" ng-click="sortType = 'region'; sortReverse = !sortReverse") Region
+                                    .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'region' && !sortReverse")
+                                    .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'region' && sortReverse")
                             th
-                                a(href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse") Name
-                                    .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'name' && !sortReverse")
-                                    .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'name' && sortReverse")
+                                a(href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse") Location
+                                    .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'location' && !sortReverse")
+                                    .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'location' && sortReverse")
                             th
-                                a(href="#" ng-click="sortType = 'description'; sortReverse = !sortReverse") Description
-                                    .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'description' && !sortReverse")
-                                    .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'description' && sortReverse")
+                                a(href="#" ng-click="sortType = 'unit'; sortReverse = !sortReverse") Unit
+                                    .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'unit' && !sortReverse")
+                                    .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'unit' && sortReverse")
                             th
-                                a(href="#" ng-click="sortType = 'created'; sortReverse = !sortReverse") Created
-                                    .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'created' && !sortReverse")
-                                    .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'created' && sortReverse")
+                                a(href="#" ng-click="sortType = 'system'; sortReverse = !sortReverse") System
+                                    .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'system' && !sortReverse")
+                                    .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'system' && sortReverse")
                             th
-                                a(href="#" ng-click="sortType = 'createdby'; sortReverse = !sortReverse") Created By
-                                    .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'createdby' && !sortReverse")
-                                    .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'createdby' && sortReverse")
+                                a(href="#" ng-click="sortType = 'softwareVersion'; sortReverse = !sortReverse") Software Version
+                                    .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'softwareVersion' && !sortReverse")
+                                    .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'softwareVersion' && sortReverse")
                             th
-                                a(href="#") View
+                                a(href="#" ng-click="sortType = 'hardwareType'; sortReverse = !sortReverse") Harware Type
+                                    .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'hardwareType' && !sortReverse")
+                                    .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'hardwareType' && sortReverse")
+
                         tbody
-                            tr(ng-repeat="trail in trails | orderBy:sortType:sortReverse | filter:searchName")
-                                td {{trail.id}}
-                                td {{trail.name}}
-                                td {{trail.description}}
-                                td {{trail.created}}
-                                td {{trail.createdBy}}
-                                td {{trail.view}}
+                            tr(ng-repeat="report in reports | orderBy:sortType:sortReverse | filter:searchName")
+                                td {{report.region}}
+                                td {{report.location}}
+                                td {{report.unit}}
+                                td {{report.system}}
+                                td {{report.softwareVersion}}
+                                td {{report.hardwareType}}
 
             div.tab( id="three.tpl.html" ng-class="{hidden:!isActiveTab('three.tpl.html')}" ng-controller="adhocReportController")
 
@@ -154,15 +168,4 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
                                             td Test2
                                         tr
                                             td Test3
-
-
-
-
-
-
-
-
-
-
-
 
