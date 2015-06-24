@@ -7,11 +7,11 @@ angular.module('NodeWebBase')
             isopen: false
         };
 
-        $scope.toggled = function(open) {
+        $scope.toggled = function (open) {
             $log.log('Dropdown is now: ', open);
         };
 
-        $scope.toggleDropdown = function($event) {
+        $scope.toggleDropdown = function ($event) {
             $event.preventDefault();
             $event.stopPropagation();
             $scope.status.isopen = !$scope.status.isopen;
@@ -54,22 +54,6 @@ angular.module('NodeWebBase')
                 value: 'another value',
                 someprop: 'somevalue'
             },
-            //{
-                // Any option with divider set to true will be a divider
-                // in the menu and cannot be selected.
-             //   divider: false
-            //},
-           // {
-                // Any divider option with a 'text' property will
-                // behave similarly to a divider and cannot be selected.
-            //    divider: false,
-            //    text: 'divider label'
-            //},
-            //{
-                // Example of an option with the 'href' property
-            //    text: 'Option4',
-            //    href: '#option4'
-            //}
         ];
 
 
@@ -98,29 +82,44 @@ angular.module('NodeWebBase')
 
         ];
 
-        $scope.ddSelectSelected = { text: 'Please Select View'}; // Must be an object
-        $scope.tSelectSelected = { text: 'Please Select Table'};
-        $scope.cSelectSelected = { text: 'Please Select Column'};
+        $scope.ddSelectSelected = {text: 'Please Select View'}; // Must be an object
+        $scope.tSelectSelected = {text: 'Please Select Table'};
+        $scope.cSelectSelected = {text: 'Please Select Column'};
 
 
+        $scope.filterItems = [
+            {
 
+                region: 'Region : Kandahar AFG'
+            },
+            {
+                region: 'Software Version : DCGS v3.1.7.3'
+            },
+            {
+                region: 'add new filter (+)'
+            }
+        ];
 
+        $scope.columnTabs = [
+            {
+                region: 'Location'
+            },
+            {
+                region: 'Unit'
+            },
+            {
+                region: 'System'
+            },
+            {
+                region: 'Software Version'
+            },
+            {
+                region: 'Hardware Type'
+            },
+            {
+                region: 'add new filter (+)'
+            }
 
+        ]
     });
 
-angular.module('NodeWebBase').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
-
-    $scope.items = items;
-    $scope.selected = {
-        item: $scope.items[0]
-    };
-
-    $scope.ok = function () {
-        $modalInstance.close($scope.selected.item);
-    };
-
-    $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
-    };
-
-});

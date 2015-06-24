@@ -98,7 +98,10 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
                 div
                     br
 
-                    div Current View:
+                    div Current View:&nbsp;
+
+                        button.btn.btn-primary.btn-sm(ng-click="open('lg')")
+                            .glyphicon.glyphicon-plus
 
                     span.col-sm-8(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text' )
 
@@ -115,14 +118,13 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
                                                 .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'id' && !sortReverse")
                                                 .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'id' && sortReverse")
                                     tbody
-                                        tr
-                                            td test
-                                        tr
-                                            td test
-                                        tr
-                                            td add new filter (+)
-                    button.btn.btn-primary.btn-sm(ng-click="open('lg')")
-                        .glyphicon.glyphicon-plus
+                                        tr(ng-repeat="filterItem in filterItems | orderBy:sortType:sortReverse | filter:searchName")
+                                            td
+                                                a(href="#" ng-click="open('lg')" ) {{filterItem.region}}
+
+
+
+
 
 
                     br
@@ -136,12 +138,18 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
                             td
                                 table.table-bordered
                                     tr
-                                        td add new filter (+)
+                                        td
+                                            a(href="#" ng-click="open('lg')" ) Tab Name
+                                    tr
+                                        td
+                                            a(href="myModalContent_BAK" ng-click="open('lg')" ) add new filter (+)
+
 
                             td
                                 table.table-bordered
-                                    tr
-                                        td add new filter (+)
+                                    tr(ng-repeat="columnTab in columnTabs | orderBy:sortType:sortReverse | filter:searchName")
+                                        td
+                                            a(href="#" ng-click="open('lg')" ) {{columnTab.region}}
 
 
                             td
@@ -166,7 +174,7 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
 
                                     table.table-bordered
 
-                                        tr test
+                                        tr examples from this category
                                             th Test
                                         tr
                                             td Test1
@@ -174,4 +182,3 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
                                             td Test2
                                         tr
                                             td Test3
-
