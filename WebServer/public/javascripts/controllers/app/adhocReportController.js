@@ -50,9 +50,9 @@ angular.module('NodeWebBase')
                 value: 'a value'
             },
             {
-                text: 'AdhocQuery2',
-                value: 'another value',
-                someprop: 'somevalue'
+                text: 'BLK II',
+                value: 'BLK II',
+                someprop: 'BLK II Report'
             },
             //{
                 // Any option with divider set to true will be a divider
