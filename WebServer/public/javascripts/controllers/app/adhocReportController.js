@@ -46,11 +46,11 @@ angular.module('NodeWebBase')
 
         $scope.ddSelectOptions = [
             {
-                text: 'AdhocQuery1',
+                text: 'DCGS-A',
                 value: 'a value'
             },
             {
-                text: 'AdhocQuery2',
+                text: 'BLK II',
                 value: 'another value',
                 someprop: 'somevalue'
             },
