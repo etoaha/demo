@@ -8,11 +8,10 @@ angular.module('NodeWebBase')
             },{
                 title: 'Reports',
                 url: 'two.tpl.html'
+            },{
+                title: 'Ad Hoc',
+                url: 'three.tpl.html'
             }
-            //{
-            //    title: 'Ad Hoc',
-            //    url: 'three.tpl.html'
-            //}
         //{
         //    title: 'Users',
         //    url: 'one.tpl.html'

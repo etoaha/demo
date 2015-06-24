@@ -46,13 +46,13 @@ angular.module('NodeWebBase')
 
         $scope.ddSelectOptions = [
             {
-                text: 'AdhocQuery1',
+                text: 'DCGS-A',
                 value: 'a value'
             },
             {
                 text: 'BLK II',
-                value: 'BLK II',
-                someprop: 'BLK II Report'
+                value: 'another value',
+                someprop: 'somevalue'
             },
             //{
                 // Any option with divider set to true will be a divider
