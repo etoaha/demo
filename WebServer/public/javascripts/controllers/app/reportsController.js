@@ -1,7 +1,7 @@
 angular.module('NodeWebBase')
     .controller('reportsController', function ($scope, $rootScope,$modal,$http, $log) {
 
-        $scope.items = ['Report1', 'Report2', 'Report3'];
+        $scope.items = ['DCGS-A', 'BLK I'];
 
         $scope.status = {
             isopen: false
@@ -46,13 +46,13 @@ angular.module('NodeWebBase')
 
         $scope.ddSelectOptions = [
             {
-                text: 'AdhocQuery1',
-                value: 'a value'
+                text: 'DCGS-A',
+                value: 'BLK II'
             },
             {
-                text: 'AdhocQuery2',
-                value: 'another value',
-                someprop: 'somevalue'
+                text: 'BLK II',
+                value: 'BLKII',
+                someprop: 'BLK II report'
             },
             //{
             // Any option with divider set to true will be a divider
@@ -73,6 +73,44 @@ angular.module('NodeWebBase')
         ];
 
         $scope.ddSelectSelected = { text: 'Please Select Report'}; // Must be an object
+
+        $scope.reports=[
+            {
+                region:'401st',
+                location:'Bagram AFG',
+                unit:'3ID',
+                system:'IFS',
+                softwareVersion:'DCGS v3.1.7.3',
+                hardwareType:'other',
+            },
+            {
+                region:'401st',
+                location:'Bagram AFG',
+                unit:'PM DCGS',
+                system:'IFS',
+                softwareVersion:'DCGS v3.1.7.3',
+                hardwareType:'other',
+
+            },
+            {
+                region:'401st',
+                location:'Kandahar AFG',
+                unit:'109th MI BN',
+                system:'P-MFWS',
+                softwareVersion:'DCGS v3.1.7.3',
+                hardwareType:'Dell M6500',
+            },
+            {
+                region:'401st',
+                location:'Kandahar AFG',
+                unit:'1CD',
+                system:'P-MFWS',
+                softwareVersion:'DCGS v3.1.7.3',
+                hardwareType:'Dell M6500',
+            }
+
+
+        ];
 
 
 
