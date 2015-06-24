@@ -9,13 +9,10 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
             //Data Entry Tab
             div.tab( id="one.tpl.html" ng-class="{hidden:!isActiveTab('one.tpl.html')}")
                 div.alert.alert-info
-                    a(ng-click="showAddEquipment = ! showAddEquipment; getUsers()") Add New Equipment&nbsp;
-                        .glyphicon.glyphicon-plus-sign(ng-show='!showAddEquipment')
-                        .glyphicon.glyphicon-minus-sign(ng-show='showAddEquipment')
-                    a(ng-click="showAddChasis = ! showAddChasis; getUsers()") Add New Chasis&nbsp;
-                        .glyphicon.glyphicon-plus-sign(ng-show='!showAddChasis')
-                        .glyphicon.glyphicon-minus-sign(ng-show='showAddChasis')
-                div.container(ng-show='showAddEquipment')
+                    a(ng-click="showAdd = ! showAdd; getUsers()") Add New Equipment&nbsp;
+                        .glyphicon.glyphicon-plus-sign(ng-show="!showAdd")
+                        .glyphicon.glyphicon-minus-sign(ng-show="showAdd")
+                div.container(ng-show='showAdd')
                     form(ng-controller='userTabController' novalidate)#login-form.well.span4
                         div
                             label Equipment ID
@@ -34,44 +31,19 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
                             input.form-control.span1.required(ng-model='data.teamId')
                         button.btn.btn-primary(ng-click='addUser()')| Add
 
-                div.container(ng-show='showAddChasis')
-                    form(ng-controller='userTabController' novalidate)#login-form.well.span4
-                        div
-                            label Chasis ID
-                            input.form-control.span1.required(ng-model='data.teamUserId')
-                        div
-                            label Chasis Type
-                            input.form-control.span1.required(ng-model='data.email')
-                        div
-                            label UIC
-                            input.form-control.span1.required(ng-model='data.uic')
-                        button.btn.btn-primary(ng-click='addUser()')| Add
+            div.tab( id="two.tpl.html" ng-class="{hidden:!isActiveTab('two.tpl.html')}" ng-controller="reportsController")
+
+                div(id="reportsTable" ng-controller="trailTabController" )
 
 
-            div.tab( id="two.tpl.html" ng-class="{hidden:!isActiveTab('two.tpl.html')}" ng-controller="adhocReportController" )
-                //div.container.alert.alert-info
-                    div
-                        label Current View
-                    div(id="dropdown" )
-                        span(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text')
-                    div
-                        button.btn.btn-primary(ng-click="open('lg')") Add New
-                            //span(ng-show='selected') Selection from a modal: {{ selected }}
-                div(id="reportsTable" ng-controller="trailTabController")
-                    div.alert.alert-info
-                        div.container
-                            div.row
-                                label.col-sm-2 Current View:
-                                span.col-sm-8(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text' )
-                                button.btn.btn-primary.btn-sm.col-sm-2(ng-click="open('lg')") Add New
-                            a(ng-click='showAdd = ! showAdd') Search
-                                .glyphicon.glyphicon-plus-sign(ng-show='!showAdd')
-                                .glyphicon.glyphicon-minus-sign(ng-show='showAdd')
-                        div(ng-show='showAdd')
-                            form.form-group.input-group.input-group-addon
-                                input.form-control(type="text", placeholder ="Report name" ng-model ="searchName" size="20")
+                    br
+
+                    span.col-sm-8(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text' )
+
+                    br
+
                     h2 Reports
-                        button.inputItem.btn.btn-default.btn-xs.glyphicon.glyphicon-refresh(ng-click="getTrails()" title="Refresh Reports List")
+
                     table.table.table-striped.table-condensed.table-hover
                         tr
                             th
@@ -96,7 +68,7 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
                                     .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'createdby' && sortReverse")
                             th
                                 a(href="#") View
-                         tbody
+                        tbody
                             tr(ng-repeat="trail in trails | orderBy:sortType:sortReverse | filter:searchName")
                                 td {{trail.id}}
                                 td {{trail.name}}
@@ -104,6 +76,92 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
                                 td {{trail.created}}
                                 td {{trail.createdBy}}
                                 td {{trail.view}}
+
+            div.tab( id="three.tpl.html" ng-class="{hidden:!isActiveTab('three.tpl.html')}" ng-controller="adhocReportController")
+
+                div(id="filterTable" ng-controller="trailTabController" )
+
+                div
+                    br
+
+                    div Current View:
+
+                    span.col-sm-8(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text' )
+
+                    table
+                        tr
+                            td &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+                            td
+                                table.table-bordered
+                                    tr
+                                        th
+                                            a(href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse") Filter
+                                                .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'id' && !sortReverse")
+                                                .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'id' && sortReverse")
+                                    tbody
+                                        tr
+                                            td add new filter (+)
+                    button.btn.btn-primary.btn-sm(ng-click="open('lg')")
+                        .glyphicon.glyphicon-plus
+                    button.btn.btn-primary.btn-sm(ng-click="open('lg')")
+                        .glyphicon.glyphicon-minus
+
+
+                    br
+                    br
+                    br
+                    br
+
+
+                    table.table-bordered
+                        tr
+                            td
+                                table.table-bordered
+                                    tr
+                                        td add new filter (+)
+
+                            td
+                                table.table-bordered
+                                    tr
+                                        td add new filter (+)
+
+
+                            td
+                                div
+                                    br
+                                    br
+
+                                    div Table:
+                                    div.col-sm-8(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text' )
+
+                                    br
+                                    br
+
+                                    div Column:
+                                    div.col-sm-8(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text' )
+
+
+                                    br
+                                    br
+
+                                    table.table-bordered
+
+                                        tr test
+                                            th Test
+                                        tr
+                                            td Test1
+                                        tr
+                                            td Test2
+                                        tr
+                                            td Test3
+
+
+
+
+
+
 
 
 
