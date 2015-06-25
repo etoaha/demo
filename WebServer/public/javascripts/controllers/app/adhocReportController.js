@@ -32,11 +32,83 @@ angular.module('NodeWebBase')
                     }
                 }
             });
+        };
+
+        $scope.openMainView = function (size) {
+
+            var modalInstance = $modal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: '/views/app/myModalContent.jade',
+                controller: 'ModalInstanceCtrl',
+                size: size,
+                resolve: {
+                    items: function () {
+                        return $scope.items;
+                    }
+                }
+            });
 
             modalInstance.result.then(function (selectedItem) {
                 $scope.selected = selectedItem;
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
+            });
+        };
+        $scope.openNewFilter = function (size) {
+
+            var modalInstance = $modal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: '/views/app/filterModal.jade',
+                controller: 'ModalInstanceCtrl',
+                size: size,
+                resolve: {
+                    items: function () {
+                        return $scope.items;
+                    }
+                }
+            });
+        };
+        $scope.openNewTab = function (size) {
+
+            var modalInstance = $modal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: '/views/app/tabModal.jade',
+                controller: 'ModalInstanceCtrl',
+                size: size,
+                resolve: {
+                    items: function () {
+                        return $scope.items;
+                    }
+                }
+            });
+        };
+        $scope.openNewColumn = function (size) {
+
+            var modalInstance = $modal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: '/views/app/newColumnModal.jade',
+                controller: 'ModalInstanceCtrl',
+                size: size,
+                resolve: {
+                    items: function () {
+                        return $scope.items;
+                    }
+                }
+            });
+        };
+
+        $scope.openEditColumn = function (size) {
+
+            var modalInstance = $modal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: '/views/app/columnModal.jade',
+                controller: 'ModalInstanceCtrl',
+                size: size,
+                resolve: {
+                    items: function () {
+                        return $scope.items;
+                    }
+                }
             });
         };
 
@@ -98,9 +170,6 @@ angular.module('NodeWebBase')
             },
             {
                 region: 'Software Version : DCGS v3.1.7.3'
-            },
-            {
-                region: 'add new filter (+)'
             }
         ];
 
@@ -119,7 +188,7 @@ angular.module('NodeWebBase')
             },
             {
                 region: 'Hardware Type'
-            },
+            }
 
 
         ]

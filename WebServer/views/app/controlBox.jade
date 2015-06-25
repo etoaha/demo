@@ -100,82 +100,55 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
 
                     div Current View:&nbsp;
 
-                        button.btn.btn-primary.btn-sm(ng-click="open('lg')")
+                        button.btn.btn-primary.btn-sm(ng-click="openMainView('lg')")
                             .glyphicon.glyphicon-plus
 
                     span.col-sm-8(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text' )
-
-                    table
-                        tr
-                            td &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-
-
-                            td
-                                table.table-bordered
-                                    tr
-                                        th
-                                            a(href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse") Filter
-                                                .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'id' && !sortReverse")
-                                                .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'id' && sortReverse")
-                                    tbody
-                                        tr(ng-repeat="filterItem in filterItems | orderBy:sortType:sortReverse | filter:searchName")
-                                            td
-                                                a(href="#" ng-click="open('lg')" ) {{filterItem.region}}
+                    div
+                        table
+                            tr
+                                td &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
 
+                                td
+                                    table.table-bordered
+                                        tr
+                                            th
+                                                a(href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse") Filter
+                                                    .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'id' && !sortReverse")
+                                                    .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'id' && sortReverse")
+                                        tbody
+                                            tr(ng-repeat="filterItem in filterItems | orderBy:sortType:sortReverse | filter:searchName")
+                                                td {{filterItem.region}}
+                                            tr
+                                                td
+                                                    a(href="#" ng-click="openNewFilter('lg')" ) add new filter (+)
 
 
 
 
-                    br
-                    br
-                    br
-                    br
+
+                br
+                br
+
+                label add new tab&nbsp;
+                button.btn.btn-primary.btn-sm(ng-click="openNewTab('lg')")
+                    .glyphicon.glyphicon-plus
+
+                div.alert.alert-info
+                    a(ng-click="showAdd = ! showAdd; getUsers()") Tab Name&nbsp;
+                        .glyphicon.glyphicon-plus-sign(ng-show="!showAdd")
+                        .glyphicon.glyphicon-minus-sign(ng-show="showAdd")
 
 
-                    table
-                        tr
-                            td(valign='top')
-                                h3 Tabs
-                                table.table-bordered
-                                    tr
-                                        td Tab Name
-                                    tr
-                                        td
-                                            a(href="" ng-click="open('lg')" ) add new tab (+)
+                div.container(ng-show='showAdd')
+                    form(ng-controller='dataEntryTabController' novalidate name="dataEntryForm")#dataEntryForm.well.span4
+                        div
+                            table.table-bordered
+                                tr(ng-repeat="columnTab in columnTabs | orderBy:sortType:sortReverse | filter:searchName")
+                                    td
+                                        a(href="#" ng-click="openEditColumn('lg')" ) {{columnTab.region}}
+                        button.btn.btn-primary.btn-sm(ng-click="openNewColumn('lg')")
+                            .glyphicon.glyphicon-plus
 
-
-                            td(valign='top')
-                                h3 Headers
-                                table.table-bordered
-                                    tr(ng-repeat="columnTab in columnTabs | orderBy:sortType:sortReverse | filter:searchName")
-                                        td  {{columnTab.region}}
-
-                                    tr
-                                        td
-                                            a(href="#" ng-click="open('lg')" ) add new column head(+)
-
-
-                            td &nbsp;&nbsp;&nbsp;&nbsp;
-
-
-                            td
-                                div
-                                    br
-                                    br
-
-                                    div Table:
-                                    div.col-sm-8(dropdown-select='tSelectOptions', dropdown-model='tSelectSelected', dropdown-item-label='text' )
-
-                                    br
-                                    br
-
-                                    div Column:
-
-
-                                    div.col-sm-8(dropdown-select='cSelectOptions', dropdown-model='cSelectSelected', dropdown-item-label='text' )
-
-
-                                    br
-                                    br
 

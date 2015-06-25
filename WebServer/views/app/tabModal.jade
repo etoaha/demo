@@ -1,5 +1,5 @@
 .modal-header
-    h3.modal-title Add a New View
+    h3.modal-title Add a New Tab
 .modal-body
     div.container(ng-controller="adhocModalController")
         div.modal-lg
@@ -8,7 +8,6 @@
                     label.control-label(for='element-1') Name
                     input#element-1.form-control(type='text')
                     span.glyphicon.form-control-feedback
-
 .modal-footer
     button.btn.btn-primary(ng-click='ok()') Save
     button.btn.btn-warning(ng-click='cancel()') Cancel

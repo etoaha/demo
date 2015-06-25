@@ -63,6 +63,18 @@ angular.module('NodeWebBase')
             $scope.animationsEnabled = !$scope.animationsEnabled;
         };
 
+        $scope.ddSelectOptions = [
+            {
+                text: 'DCGS-A',
+                value: 'a value'
+            },
+            {
+                text: 'BLK II',
+                value: 'another value',
+                someprop: 'somevalue'
+            }
+        ];
+        $scope.ddSelectSelected = {text: 'Please Select View'};
         $scope.tables = [
             {
                 text: 'Chasis',
