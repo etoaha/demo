@@ -1,5 +1,5 @@
 .modal-header
-    h3.modal-title Add a New View
+    h3.modal-title Add a New Report
 .modal-body
     div.container(ng-controller="adhocModalController")
         div.modal-lg
@@ -8,6 +8,11 @@
                     label.control-label(for='element-1') Name
                     input#element-1.form-control(type='text')
                     span.glyphicon.form-control-feedback
+
+                    br
+
+                    label Make this a public report?&nbsp;
+                        input(type='checkbox' name='agreement' )
 
 .modal-footer
     button.btn.btn-primary(ng-click='ok()') Save

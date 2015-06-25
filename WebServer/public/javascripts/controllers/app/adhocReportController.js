@@ -129,36 +129,45 @@ angular.module('NodeWebBase')
         ];
 
 
-        $scope.tSelectOptions = [
+
+        $scope.reports=[
             {
-                text: 'Units',
-                value: 'a value'
+                region:'401st',
+                location:'Bagram AFG',
+                unit:'3ID',
+                system:'IFS',
+                softwareVersion:'DCGS v3.1.7.3',
+                hardwareType:'other',
             },
             {
-                text: 'Equipment',
-                value: 'another value',
-                someprop: 'somevalue'
-            },{
-                text: 'Baselines',
-                value: 'another value',
-                someprop: 'somevalue'
-            }
+                region:'401st',
+                location:'Bagram AFG',
+                unit:'PM DCGS',
+                system:'IFS',
+                softwareVersion:'DCGS v3.1.7.3',
+                hardwareType:'other',
 
-        ];
-        $scope.cSelectOptions = [
-            {
-                text: 'ID',
-                value: 'a value'
             },
             {
-                text: 'Unit Name',
-                value: 'another value',
-                someprop: 'somevalue'
+                region:'401st',
+                location:'Kandahar AFG',
+                unit:'109th MI BN',
+                system:'P-MFWS',
+                softwareVersion:'DCGS v3.1.7.3',
+                hardwareType:'Dell M6500',
+            },
+            {
+                region:'401st',
+                location:'Kandahar AFG',
+                unit:'1CD',
+                system:'P-MFWS',
+                softwareVersion:'DCGS v3.1.7.3',
+                hardwareType:'Dell M6500',
             }
 
-        ];
 
-        $scope.ddSelectSelected = {text: 'Please Select View'}; // Must be an object
+        ];
+        $scope.ddSelectSelected = {text: 'Please Select Report'}; // Must be an object
         $scope.tSelectSelected = {text: 'Please Select Table'};
         $scope.cSelectSelected = {text: 'Please Select Column'};
 
@@ -166,7 +175,7 @@ angular.module('NodeWebBase')
         $scope.filterItems = [
             {
 
-                region: 'Region : Kandahar AFG'
+                region: 'Region : 401st'
             },
             {
                 region: 'Software Version : DCGS v3.1.7.3'

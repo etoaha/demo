@@ -98,7 +98,7 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
                 div
                     br
 
-                    div Current View:&nbsp;
+                    div Current Report:&nbsp;
 
                         button.btn.btn-primary.btn-sm(ng-click="openMainView('lg')")
                             .glyphicon.glyphicon-plus
@@ -131,24 +131,56 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
                 br
                 br
 
-                label add new tab&nbsp;
-                button.btn.btn-primary.btn-sm(ng-click="openNewTab('lg')")
-                    .glyphicon.glyphicon-plus
 
-                div.alert.alert-info
-                    a(ng-click="showAdd = ! showAdd; getUsers()") Tab Name&nbsp;
-                        .glyphicon.glyphicon-plus-sign(ng-show="!showAdd")
-                        .glyphicon.glyphicon-minus-sign(ng-show="showAdd")
+                table
+                    tr
+                        td(valign="top")
 
+                            div
+                                h3 Custom Column Headers
+                                table.table-bordered
+                                    tr(ng-repeat="columnTab in columnTabs | orderBy:sortType:sortReverse | filter:searchName")
+                                        td
+                                            a(href="#" ng-click="openEditColumn('lg')" ) {{columnTab.region}}
+                            button.btn.btn-primary.btn-sm(ng-click="openNewColumn('lg')")
+                                .glyphicon.glyphicon-plus
+                        td &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        td(valign="top")
+                            h3 Sample Report
+                            table.table.table-striped.table-condensed.table-hover
+                                tr
+                                    th
+                                        a(href="#" ng-click="sortType = 'region'; sortReverse = !sortReverse") Region
+                                            .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'region' && !sortReverse")
+                                            .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'region' && sortReverse")
+                                    th
+                                        a(href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse") Location
+                                            .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'location' && !sortReverse")
+                                            .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'location' && sortReverse")
+                                    th
+                                        a(href="#" ng-click="sortType = 'unit'; sortReverse = !sortReverse") Unit
+                                            .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'unit' && !sortReverse")
+                                            .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'unit' && sortReverse")
+                                    th
+                                        a(href="#" ng-click="sortType = 'system'; sortReverse = !sortReverse") System
+                                            .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'system' && !sortReverse")
+                                            .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'system' && sortReverse")
+                                    th
+                                        a(href="#" ng-click="sortType = 'softwareVersion'; sortReverse = !sortReverse") Software Version
+                                            .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'softwareVersion' && !sortReverse")
+                                            .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'softwareVersion' && sortReverse")
+                                    th
+                                        a(href="#" ng-click="sortType = 'hardwareType'; sortReverse = !sortReverse") Harware Type
+                                            .glyphicon.glyphicon-arrow-up(ng-show="sortType == 'hardwareType' && !sortReverse")
+                                            .glyphicon.glyphicon-arrow-down(ng-show="sortType == 'hardwareType' && sortReverse")
+                                                tbody
+                                    tr(ng-repeat="report in reports | orderBy:sortType:sortReverse | filter:searchName")
+                                        td {{report.region}}
+                                        td {{report.location}}
+                                        td {{report.unit}}
+                                        td {{report.system}}
+                                        td {{report.softwareVersion}}
+                                        td {{report.hardwareType}}
 
-                div.container(ng-show='showAdd')
-                    form(ng-controller='dataEntryTabController' novalidate name="dataEntryForm")#dataEntryForm.well.span4
-                        div
-                            table.table-bordered
-                                tr(ng-repeat="columnTab in columnTabs | orderBy:sortType:sortReverse | filter:searchName")
-                                    td
-                                        a(href="#" ng-click="openEditColumn('lg')" ) {{columnTab.region}}
-                        button.btn.btn-primary.btn-sm(ng-click="openNewColumn('lg')")
-                            .glyphicon.glyphicon-plus
 
 

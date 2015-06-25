@@ -2,8 +2,8 @@
     h3.modal-title Content Design
 .modal-body
     div.container(ng-controller="adhocModalController")
-       span.col-sm-8(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text' style="width = 50%")
-       span.col-sm-8(dropdown-select='ddSelectOptions', dropdown-model='ddSelectSelected', dropdown-item-label='text' style="width = 50%")
+       span.col-sm-8(dropdown-select='tSelectOptions', dropdown-model='tableSelectSelected', dropdown-item-label='text' style="width = 50%")
+       span.col-sm-8(dropdown-select='cSelectOptions', dropdown-model='columnSelectSelected', dropdown-item-label='text' style="width = 50%")
 .modal-footer
     button.btn.btn-primary(ng-click='ok()') Save
     button.btn.btn-warning(ng-click='cancel()') Cancel

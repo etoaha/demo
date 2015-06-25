@@ -74,7 +74,122 @@ angular.module('NodeWebBase')
                 someprop: 'somevalue'
             }
         ];
-        $scope.ddSelectSelected = {text: 'Please Select View'};
+        $scope.ddSelectSelected = {text: 'Please Select Report'};
+        $scope.unitSelectSelected = {text: 'Please Select a Unit'};
+        $scope.filterBySelectSelected = {text: 'Sort By'};
+        $scope.tableSelectSelected = {text: 'Please Select a Table'};
+        $scope.columnSelectSelected = {text: 'Please Select a Column'};
+
+
+        $scope.tSelectOptions = [
+            {
+                text: 'Chassis',
+                value: 'a value'
+            },
+            {
+                text: 'Locations',
+                value: 'another value',
+                someprop: 'somevalue'
+            },{
+                text: 'Unit POCs',
+                value: 'another value',
+                someprop: 'somevalue'
+            }, {
+                text: 'Units',
+                value: 'another value',
+                someprop: 'somevalue'
+            },{
+                text: 'Systems',
+                value: 'another value',
+                someprop: 'somevalue'
+            },{
+                text: 'Equipment',
+                value: 'another value',
+                someprop: 'somevalue'
+            },{
+                text: 'Baselines',
+                value: 'another value',
+                someprop: 'somevalue'
+            },{
+                text: 'Software',
+                value: 'another value',
+                someprop: 'somevalue'
+            }
+        ];
+
+        $scope.cSelectOptions = [
+            {
+                text: 'Shelter ID',
+                value: 'a value'
+            },
+            {
+                text: 'Equipment Type ID',
+                value: 'another value',
+                someprop: 'somevalue'
+            },{
+                text: 'Baseline ID',
+                value: 'another value',
+                someprop: 'somevalue'
+            },{
+                text: 'Equipment Identifier',
+                value: 'another value',
+                someprop: 'somevalue'
+            },{
+                text: 'Decommission Date',
+                value: 'another value',
+                someprop: 'somevalue'
+            }
+        ];
+        $scope.unitSelectOptions = [
+            {
+                text: '401st',
+                value: 'a value'
+            },
+            {
+                text: '402nd',
+                value: 'another value',
+                someprop: 'somevalue'
+            },{
+                text: '403rd',
+                value: 'another value',
+                someprop: 'somevalue'
+            }, {
+                text: '404th',
+                value: 'another value',
+                someprop: 'somevalue'
+            },{
+                text: '405th',
+                value: 'another value',
+                someprop: 'somevalue'
+            },{
+                text: '406th',
+                value: 'another value',
+                someprop: 'somevalue'
+            },{
+                text: '407th',
+                value: 'another value',
+                someprop: 'somevalue'
+            }
+
+
+        ];
+
+
+        $scope.filterBySelectOptions = [
+            {
+                text: 'Units',
+                value: 'a value'
+            },
+            {
+                text: 'Equipment',
+                value: 'another value',
+                someprop: 'somevalue'
+            },{
+                text: 'Baselines',
+                value: 'another value',
+                someprop: 'somevalue'
+            }
+        ];
         $scope.tables = [
             {
                 text: 'Chasis',
@@ -82,7 +197,7 @@ angular.module('NodeWebBase')
             },
             {
                 text: 'System',
-                value: 'System',
+                value: 'System'
             },
             //{
                 // Any option with divider set to true will be a divider
