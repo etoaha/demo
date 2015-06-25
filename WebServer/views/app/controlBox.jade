@@ -133,23 +133,30 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
                     br
 
 
-                    table.table-bordered
+                    table
                         tr
-                            td
+                            td(valign='top')
+                                h3 Tabs
                                 table.table-bordered
                                     tr
-                                        td
-                                            a(href="#" ng-click="open('lg')" ) Tab Name
+                                        td Tab Name
                                     tr
                                         td
-                                            a(href="myModalContent_BAK" ng-click="open('lg')" ) add new filter (+)
+                                            a(href="" ng-click="open('lg')" ) add new tab (+)
 
 
-                            td
+                            td(valign='top')
+                                h3 Headers
                                 table.table-bordered
                                     tr(ng-repeat="columnTab in columnTabs | orderBy:sortType:sortReverse | filter:searchName")
+                                        td  {{columnTab.region}}
+
+                                    tr
                                         td
-                                            a(href="#" ng-click="open('lg')" ) {{columnTab.region}}
+                                            a(href="#" ng-click="open('lg')" ) add new column head(+)
+
+
+                            td &nbsp;&nbsp;&nbsp;&nbsp;
 
 
                             td
@@ -172,13 +179,3 @@ div.scrollable.tabs(id="tabs" percent-Height percent="100"  ng-style="style" ng-
                                     br
                                     br
 
-                                    table.table-bordered
-
-                                        tr examples from this category
-                                            th Test
-                                        tr
-                                            td Test1
-                                        tr
-                                            td Test2
-                                        tr
-                                            td Test3

@@ -59,26 +59,30 @@ angular.module('NodeWebBase')
 
         $scope.tSelectOptions = [
             {
-                text: 'DCGS-A',
+                text: 'Units',
                 value: 'a value'
             },
             {
-                text: 'BLK II',
+                text: 'Equipment',
                 value: 'another value',
                 someprop: 'somevalue'
-            },
+            },{
+                text: 'Baselines',
+                value: 'another value',
+                someprop: 'somevalue'
+            }
 
         ];
         $scope.cSelectOptions = [
             {
-                text: 'DCGS-A',
+                text: 'ID',
                 value: 'a value'
             },
             {
-                text: 'BLK II',
+                text: 'Unit Name',
                 value: 'another value',
                 someprop: 'somevalue'
-            },
+            }
 
         ];
 
@@ -116,9 +120,7 @@ angular.module('NodeWebBase')
             {
                 region: 'Hardware Type'
             },
-            {
-                region: 'add new filter (+)'
-            }
+
 
         ]
     });
