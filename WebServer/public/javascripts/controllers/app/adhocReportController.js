@@ -184,6 +184,9 @@ angular.module('NodeWebBase')
 
         $scope.columnTabs = [
             {
+                region: 'Region',
+
+            }, {
                 region: 'Location'
             },
             {
