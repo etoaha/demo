@@ -188,6 +188,10 @@ angular.module('NodeWebBase')
                 text: 'Baselines',
                 value: 'another value',
                 someprop: 'somevalue'
+            },{
+                text: 'Region',
+                value: 'another value',
+                someprop: 'somevalue'
             }
         ];
         $scope.tables = [

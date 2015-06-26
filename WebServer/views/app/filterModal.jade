@@ -1,8 +1,17 @@
 .modal-header
-    h3.modal-title Content Design
+    h3.modal-title Add A New Filter
 .modal-body
     div.container(ng-controller="adhocModalController")
+        label Filter By:
+        br
+
         span.col-sm-8(dropdown-select='filterBySelectOptions', dropdown-model='filterBySelectSelected', dropdown-item-label='text' style="width = 50%")
+
+        br
+        br
+
+        label Filter On:
+        br
         span.col-sm-8(dropdown-select='unitSelectOptions', dropdown-model='unitSelectSelected', dropdown-item-label='text' style="width = 50%")
 .modal-footer
     button.btn.btn-primary(ng-click='ok()') Save
