@@ -1,0 +1,11 @@
+{
+  "IFTMyssql": {
+    "host": "localhost",
+    "port": 51212,
+    "database": "IFT",
+    "password": "Sql!Server_2015",
+    "name": "IFTMyssql",
+    "connector": "mssql",
+    "user": "sa"
+  }
+}
