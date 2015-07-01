@@ -1,1 +1,104 @@
-{}
+{
+    "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ]
+  },
+  "AppliedPatches": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Baselines": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Baselinemetadata": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Chassis": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Chassismetadata": {
+    "dataSource": "IFTMyssql",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Classifications": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Equipment": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Equipmentstatusnotes": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Equipmentmetadata": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Equipmenttype": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Hardwarebaseline": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Locations": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Metadataoptions": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  
+  "Metadatatypes": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Patches": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Pbuserawdata": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Platformversions": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Software": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Softwaremetadata": {
+    "dataSource": "IFTMyssql",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Unitpocs": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Units": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  },
+  "Unittype": {
+    "dataSource": "IFTMyssql",
+    "public": true
+  }
+
+}
